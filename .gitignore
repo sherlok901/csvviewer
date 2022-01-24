@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/csvviewer/csvviewer/obj/Debug
+/csvviewer/.vs/csvviewer
+/csvviewer/csvviewer/bin/Debug
+/csvviewer/csvviewer.tests/bin/Debug/net48
+/csvviewer/csvviewer.tests/obj
