@@ -19,23 +19,47 @@ namespace csvviewer
             var filename = _argParser.GetFilename(args);
             var pageLength = _argParser.GetPageLength(args);
             var lines = _fileReder.ReadFileContent(filename);
-            var result = GetFirstRecords(pageLength, lines);
+            var result = GetLines(pageLength, lines, _paging.ExtractFirstPage);
             return result;
         }
         
+        //TODO: when file names not specified show message, check the file existness
         public IEnumerable<string> FirstPage()
         {
-            var pageLength = _argParser.GetPageLength();
-            var lines = _fileReder.GetFileContent();
-            var result = GetFirstRecords(pageLength, lines);
+            var result = GetLines(_argParser.PageLength, _fileReder, _paging.ExtractFirstPage);
             return result;
         }
 
-        private IEnumerable<string> GetFirstRecords(int pageLength, IEnumerable<string> lines)
+        public IEnumerable<string> PrevPage()
         {
-            var firstPage = _paging.ExtractFirstPage(lines, pageLength);
+            var result = GetLines(_argParser.PageLength, _fileReder, _paging.ExtractPrevPage);
+            return result;
+        }
+
+        public IEnumerable<string> NextPage()
+        {
+            var result = GetLines(_argParser.PageLength, _fileReder, _paging.ExtractNextPage);
+            return result;
+        }
+
+        public IEnumerable<string> LastPage()
+        {
+            var result = GetLines(_argParser.PageLength, _fileReder, _paging.ExtractLastPage);
+            return result;
+        }
+
+        private IEnumerable<string> GetLines(int pageLength, IEnumerable<string> lines, Func<IEnumerable<string>, int, IEnumerable<string>> func)
+        {
+            var firstPage = func(lines, pageLength);
             var records = Csv.CreateRecords(firstPage);
-             var result = _formatter.Format(records);
+            var result = _formatter.Format(records);
+            return result;
+        }
+
+        private IEnumerable<string> GetLines(int pageLength, FileReader fileReder, Func<IEnumerable<string>, int, IEnumerable<string>> func)
+        {
+            var lines = fileReder.GetFileContent();
+            var result = GetLines(pageLength, lines, func);
             return result;
         }
     }

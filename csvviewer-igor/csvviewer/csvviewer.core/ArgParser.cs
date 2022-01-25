@@ -21,6 +21,6 @@ namespace csvviewer.core
             return _pageLength;
         }
 
-        public int GetPageLength() => _pageLength;
+        public int PageLength => _pageLength;
     }
 }
