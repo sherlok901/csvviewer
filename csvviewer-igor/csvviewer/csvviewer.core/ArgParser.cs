@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace csvviewer.core
 {
-    internal class ArgParser
+    public class ArgParser
     {
         private int _pageLength;
 

@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace csvviewer
 {
     public class Ui
     {
-        public event Action MoveFirst;
-        public event Action MovePrev;
-        public event Action MoveNext;
-        public event Action MoveLast;
+        public event Action MoveToFirst;
+        public event Action MoveToPrev;
+        public event Action MoveToNext;
+        public event Action MoveToLast;
 
         public void Run()
         {
@@ -30,19 +28,24 @@ namespace csvviewer
                         exit = true;
                         break;
                     case "F":
-                        MoveFirst();
+                        MoveToFirst();
                         break;
                     case "P":
-                        MovePrev();
+                        MoveToPrev();
                         break;
                     case "N":
-                        MoveNext();
+                        MoveToNext();
                         break;
                     case "L":
-                        MoveLast();
+                        MoveToLast();
                         break;
                 }
             } while (!exit);
+        }
+
+        public void Display(IEnumerable<string> lines)
+        {
+            lines.ToList().ForEach(Console.WriteLine);
         }
     }
 }

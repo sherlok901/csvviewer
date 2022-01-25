@@ -3,4 +3,7 @@
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>"C:\Users\Ihor\source\repos\csvviewer\csvviewer-igor\csvviewer\csvviewer\bin\Debug\persons.csv" 10</StartArguments>
+  </PropertyGroup>
 </Project>

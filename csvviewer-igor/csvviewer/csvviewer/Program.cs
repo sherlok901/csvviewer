@@ -15,9 +15,26 @@ namespace csvviewer
 
             void Start()
             {
-                var records = interactor.Start(args);
-                //ui.Display(records);
+                var lines = interactor.FirstPage(args);
+                ui.Display(lines);
             }
+
+            ui.MoveToFirst += () => {
+                var records = interactor.FirstPage();
+                ui.Display(records);
+            };
+            //ui.MovePrev += () => {
+            //    var records = interactor.PrevPage();
+            //    ui.Display(records);
+            //};
+            //ui.MoveNext += () => {
+            //    var records = interactor.NextPage();
+            //    ui.Display(records);
+            //};
+            //ui.MoveLast += () => {
+            //    var records = interactor.LastPage();
+            //    ui.Display(records);
+            //};
 
             Start();
             ui.Run();

@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "fde5fc16-0532-43a3-9d6b-33c323c35fa9": {
+      "ProjectGuid": "fde5fc16-0532-43a3-9d6b-33c323c35fa9",
+      "DisplayName": "csvviewer",
+      "ColorIndex": 0
+    },
+    "fd061af2-42fa-40ca-97b7-671667033862": {
+      "ProjectGuid": "fd061af2-42fa-40ca-97b7-671667033862",
+      "DisplayName": "csvviewer.core",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
